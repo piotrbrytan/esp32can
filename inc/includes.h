@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -16,6 +17,7 @@
 #include "esp_wifi.h"
 #include "esp_log.h"
 #include "esp_event_loop.h"
+#include "esp_err.h"
 
 #include "lwip/sockets.h"
 #include "lwip/dns.h"
@@ -26,6 +28,7 @@
 #include "mqtt_client.h"
 
 #include "driver/gpio.h"
+#include "driver/can.h"
 
 #include "configs.h"
 
