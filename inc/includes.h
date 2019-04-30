@@ -1,3 +1,11 @@
+/**
+* @file includes.h 
+* @brief Ten plik zawiera wszystkie pliki nagłówkowe.
+*
+* @author Piotr Brytan 
+*
+* @date 31/04/2019
+*/
 #ifndef MAIN_INCLUDE_INCLUDES_H_
 #define MAIN_INCLUDE_INCLUDES_H_
 

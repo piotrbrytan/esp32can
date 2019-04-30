@@ -1,7 +1,7 @@
 #include "inc/includes.h"
 #include "inc/can.h"
 
-const can_timing_config_t t_config = CAN_TIMING_CONFIG_125KBITS();
+const can_timing_config_t t_config = CAN_TIMING_CONFIG_125KBITS(); //predkosc 125kb
 const can_filter_config_t f_config = CAN_FILTER_CONFIG_ACCEPT_ALL();
 const can_general_config_t g_config =
 		CAN_GENERAL_CONFIG_DEFAULT(CAN_TX_GPIO, CAN_RX_GPIO, CAN_MODE_NORMAL);
@@ -81,7 +81,7 @@ void can_receive_task(void *arg) {
 
 void can_status(void) {
 	can_message_t message;
-	message.identifier = 0x554;
+	message.identifier = 0x554; //id ramki statusu
 	message.flags = CAN_MSG_FLAG_NONE;
 	message.data_length_code = 1;
 

@@ -31,7 +31,6 @@ esp_err_t wifi_event_handler(void *ctx, system_event_t *event) {
 		break;
 	case SYSTEM_EVENT_STA_GOT_IP:
 		xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
-
 		break;
 	case SYSTEM_EVENT_STA_DISCONNECTED:
 		esp_wifi_connect();
