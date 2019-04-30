@@ -3,11 +3,9 @@
 
 static const char *TAG = "CAN_WiFi";
 
-//event handler do mqtt
 esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event) {
 	esp_mqtt_client_handle_t client = event->client;
 	int msg_id;
-	// your_context_t *context = event->context;
 	switch (event->event_id) {
 	case MQTT_EVENT_CONNECTED:
 		ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
@@ -55,12 +53,9 @@ esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event) {
 	return ESP_OK;
 }
 
-//uruchomienie mqtt na urzadzeniu
 void mqtt_app_start(void) {
 	esp_mqtt_client_config_t mqtt_cfg = { .uri = CONFIG_BROKER_URL,
-			.event_handle = mqtt_event_handler,
-	// .user_context = (void *)your_context
-			};
+			.event_handle = mqtt_event_handler, };
 
 #if CONFIG_BROKER_URL_FROM_STDIN
     char line[128];

@@ -6,18 +6,16 @@ const can_filter_config_t f_config = CAN_FILTER_CONFIG_ACCEPT_ALL();
 const can_general_config_t g_config =
 		CAN_GENERAL_CONFIG_DEFAULT(CAN_TX_GPIO, CAN_RX_GPIO, CAN_MODE_NORMAL);
 
-/* --------------------------- Tasks and Functions -------------------------- */
-
 void route_module(uint32_t id) {
 	switch (id) {
 	case 0x555: //LED ON
 		gpio_pad_select_gpio(BUILDIN_LED);
-		gpio_set_direction(BUILDIN_LED, GPIO_MODE_OUTPUT);
+		gpio_set_direction(BUILDIN_LED, GPIO_MODE_INPUT_OUTPUT);
 		gpio_set_level(BUILDIN_LED, 1);
 		break;
 	case 0x556: //LED OFF
 		gpio_pad_select_gpio(BUILDIN_LED);
-		gpio_set_direction(BUILDIN_LED, GPIO_MODE_OUTPUT);
+		gpio_set_direction(BUILDIN_LED, GPIO_MODE_INPUT_OUTPUT);
 		gpio_set_level(BUILDIN_LED, 0);
 		break;
 	default:
@@ -66,7 +64,6 @@ void can_receive_task(void *arg) {
 		return;
 	}
 
-	//Process received message
 	if (message.flags & CAN_MSG_FLAG_EXTD) {
 		printf("Message is in Extended Format\n");
 	} else {
@@ -80,4 +77,23 @@ void can_receive_task(void *arg) {
 	}
 
 	route_module(message.identifier);
+}
+
+void can_status(void) {
+	can_message_t message;
+	message.identifier = 0x554;
+	message.flags = CAN_MSG_FLAG_NONE;
+	message.data_length_code = 1;
+
+	if (gpio_get_level(BUILDIN_LED)) {
+		message.data[0] = 1;
+	} else {
+		message.data[0] = 0;
+	}
+
+	if (can_transmit(&message, pdMS_TO_TICKS(1000)) == ESP_OK) {
+		printf("Message queued for transmission\n");
+	} else {
+		printf("Failed to queue message for transmission\n");
+	}
 }
