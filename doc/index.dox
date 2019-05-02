@@ -1,0 +1,34 @@
+/*! \mainpage Projekt na konkurs Global Logic - ESP32 jako CAN node 
+ *
+ * \section intro_sec Wstęp
+ *
+ * Celem projektu było zaprogramowanie ESP32 do pracy w sieci CAN, czyli wysyłanie oraz odbieranie ramek i wykonywanie określonych działań po otrzymaniu konkretnej ramki . Program jest prostą implementacją CAN. Mikrokontroler wykonuje:   
+ * - raportowanie czy dioda jest wyłączona(wartość danych 00) czy włączona(wartość danych 01) na ramce o ID 554 (hex)
+ * - włączenie wbudowanej diody po otrzymaniu ramki z ID 555 (hex)
+ * - wyłączenie wbudowanej diody po otrzymaniu ramki z ID 556 (hex)
+ *
+ * \section techs Użyte programy i technologie
+ * - Ubuntu 18.04
+ * - Eclipse 4.11.0
+ * - putty
+ * - can-utils (Linux SocketCAN)
+ * - ESP-IDF 
+ *  
+ * \section hardware Użyty sprzęt 
+ * - ESP32 Devkit V1
+ * - Moduł z interfejsem CAN - SN65HVD230 x2
+ * - BeagleBone Black 
+ * \image html doc/schem.png
+ *
+ * \section install_sec Konfiguracja
+ * Konfiguracja i pobranie biblioteki:
+ * https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html#installation-step-by-step
+ *
+ * Stworzenie projektu w Eclipse:
+ * https://docs.espressif.com/projects/esp-idf/en/latest/get-started/eclipse-setup.html
+ * 
+ * \section f_doc Dokumentacja funkcji
+ * Plik -> Lista plików 
+ *  
+ *
+ */
