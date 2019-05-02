@@ -24,11 +24,16 @@
  * Konfiguracja i pobranie biblioteki:
  * https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html#installation-step-by-step
  *
- * Stworzenie projektu w Eclipse:
+ * Do uruchomienia programu należy stworzyć projekt w Eclipse według tego poradnika:
  * https://docs.espressif.com/projects/esp-idf/en/latest/get-started/eclipse-setup.html
  * 
+ * oraz tempate-a aplikacji z Github:
+ * https://github.com/espressif/esp-idf-template
+ *
+ * zawartość repozytorium należy umieścić w folderze main.
+ *
  * \section f_doc Dokumentacja funkcji
- * Plik -> Lista plików 
+ * Pliki -> Lista plików 
  *  
  *
  */
